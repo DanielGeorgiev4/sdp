@@ -6,10 +6,10 @@ int main()
 	cout << "Enter the number of point you are aбout to enter: ";
 	cin >> n;
 
-	//*vectors е динамичен масив, не знам дали сте ги вземали, но така се прави
+	//*vectors e dinamichen masiv, ne znam dali ste go vzemali, no taka se pravi
 	double *vectors = new double[n], x, y, max_vector,buff;
 
-	// това ти е въвежданте на точките
+	// tova ti e vuvejdaneto na tochkite
 	for (unsigned i = 0; i < n; i++)
 	{
 		cout << "Enter x" << i + 1 << ": ";
@@ -19,33 +19,33 @@ int main()
 		vectors[i] = sqrt(x*x + y*y);
 	}
 	
-	// това ти намира най-дългия вектор в max_vector
+	// tova ti namira nai-dulgiq vector v max_vector
 	max_vector = vectors[0];
 	for (unsigned i = 0; i < n; i++) if (vectors[i] > max_vector) max_vector = vectors[i];
 	
-	// това ти сортира масива то векторите vectors в низходящ ред
+	// tova ti sortita masiva ot vectorite vectors v nizhodqsht red
 	for (unsigned i = 0; i < n - 1; i++)
 		for (unsigned k = i + 1; k < n; k++)
 		{
-			//ако не ви дава да използвате swap да разменяш числа ползвай това отдолу
+			//ako ne vi dava da polzvate swap da razmenqsh chisla polzvai tova dolu
 			if (vectors[i] < vectors[k])
 			{
 				buff = vectors[i];
 				vectors[i] = vectors[k];
 				vectors[k] = buff;
 			}
-			// аз бих го направил така, ако ви дава да ползвате swap
+			// az bih go napravil taka, ako vi dava da polzvate swap
 			/*if (vectors[i] < vectors[k]) swap(vectors[i], vectors[k]);*/
 		}
 
-	//тук ги принтя
+	//tuk print-q nai-dulgiq vector
 	cout << endl << "Longest vector: " << max_vector << endl;
 	for (unsigned i = 0; i < n; i++)
 	{
 		cout << i + 1 << ") " << vectors[i] << endl;
 	}
 
-	//тук трия масива понеже е заделен в hesh-a, но ако не сте го учили може да не го пишеш,
-	//но е грешка да не го пишеш попринцип, ти си прецени
+	//tuk triq masiva poneje e zadelen v hesh-a, no ako ne ste go uchili moje da ne go pishesh,
+	//no e greshka da ne go pishesh poprincip, ti si precini
 	delete[] vectors;
 }
